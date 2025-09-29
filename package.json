@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "project-gendiff",
   "homepage": "https://github.com/Kseolis/qa-auto-engineer-javascript-project-87#readme",
   "bugs": {
@@ -13,7 +13,10 @@
   "license": "ISC",
   "author": "Vlad_Nikolaenko",
   "type": "module",
-  "main": "eslint.config.js",
+  "main": "src/diff.js",
+  "exports": {
+    ".": "./src/diff.js"
+  },
   "bin": {
     "gendiff": "./src/gendiff.js"
   },
