@@ -15,10 +15,19 @@ export default [
   },
   {
     languageOptions: {
-      globals: globals.node,
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+      },
       parserOptions: {
         projectService: true,
       },
+    },
+    rules: {
+      '@stylistic/semi': 'off',
+      '@stylistic/arrow-parens': 'off',
+      '@stylistic/no-multiple-empty-lines': 'off',
+      '@stylistic/eol-last': 'off',
     },
   },
 ]
