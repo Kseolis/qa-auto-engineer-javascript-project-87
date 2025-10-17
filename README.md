@@ -27,7 +27,7 @@ npm run coverage   # тесты с генерацией покрытия
 {"timeout": 20, "verbose": true, "host": "hexlet.io"}
 ```
 
-Ожидаемый вывод сравнения плоских JSON:
+Ожидаемый вывод сравнения плоских JSON/YAML (формат stylish по умолчанию):
 
 ```
 {
@@ -39,6 +39,32 @@ npm run coverage   # тесты с генерацией покрытия
   + verbose: true
 }
 ```
+
+### Сравнение YAML-файлов
+
+Теперь поддерживаются не только JSON, но и YAML-файлы (`.yml`, `.yaml`).
+
+```bash
+# Пример запуска для YAML
+gendiff __fixtures__/file1.yml __fixtures__/file2.yml
+```
+
+Ожидаемый вывод для плоских YAML-данных идентичен JSON-примеру выше:
+
+```
+{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}
+```
+
+### Демонстрация (asciinema)
+
+[Демонстрация работы пакета с YAML на asciinema](https://asciinema.org/)
 
 ## Примечания по CI и SonarQube
 
