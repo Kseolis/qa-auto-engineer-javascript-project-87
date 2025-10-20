@@ -4,8 +4,8 @@ export const buildDiffTree = (data1, data2) => {
   const allKeys = [...new Set([...keys1, ...keys2])].sort((a, b) => a.localeCompare(b))
 
   return allKeys.map((key) => {
-    const has1 = Object.prototype.hasOwnProperty.call(data1, key)
-    const has2 = Object.prototype.hasOwnProperty.call(data2, key)
+    const has1 = Object.hasOwn(data1, key)
+    const has2 = Object.hasOwn(data2, key)
     const [val1, val2] = [data1[key], data2[key]]
 
     if (has1 && has2 && Object.is(val1, val2)) {

@@ -11,5 +11,3 @@ export const formatDiff = (diffTree, formatName = 'stylish') => {
   }
   return formatter(diffTree)
 }
-
-export default formatDiff

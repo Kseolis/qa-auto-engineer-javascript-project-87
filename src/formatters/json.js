@@ -6,7 +6,7 @@ const json = (diffTree) => {
     unchanged: {},
   }
 
-  diffTree.forEach(({ type, key, value, oldValue, newValue }) => {
+  for (const { type, key, value, oldValue, newValue } of diffTree) {
     switch (type) {
       case 'added':
         changes.added[key] = value
@@ -23,7 +23,7 @@ const json = (diffTree) => {
       default:
         throw new Error(`Unknown node type: ${type}`)
     }
-  })
+  }
 
   const result = {
     summary: {
