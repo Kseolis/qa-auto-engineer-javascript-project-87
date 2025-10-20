@@ -2,8 +2,9 @@
 
 [![Hexlet Check](https://github.com/Kseolis/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kseolis/qa-auto-engineer-javascript-project-87/actions)
 [![CI](https://github.com/Kseolis/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml/badge.svg)](https://github.com/Kseolis/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml)
-[![Coverage](https://img.shields.io/badge/coverage-lcov-blue)](./coverage/lcov.info)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Kseolis_qa-auto-engineer-javascript-project-87&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Kseolis_qa-auto-engineer-javascript-project-87)
 [![ESLint](https://img.shields.io/badge/lint-eslint-4B32C3)](https://eslint.org)
+[![Actions Status](https://github.com/Kseolis/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kseolis/qa-auto-engineer-javascript-project-87/actions)
 
 Утилита командной строки для сравнения конфигурационных файлов в форматах JSON и YAML.
 
