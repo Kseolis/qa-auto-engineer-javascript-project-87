@@ -1,36 +1,29 @@
-const stringifyValue = (value) => {
-  if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
-    return '[complex value]';
-  }
-  return String(value);
-};
+import { stringifyValueForStylish } from '../utils/string.js';
 
 const renderLine = (sign, key, value) => {
   const prefix = sign === ' ' ? '    ' : `  ${sign} `;
-  return `${prefix}${key}: ${stringifyValue(value)}`;
+  return `${prefix}${key}: ${stringifyValueForStylish(value)}`;
 };
 
 const stylish = (diffTree) => {
-  const lines = diffTree.flatMap((node) => {
-    switch (node.type) {
+  const lines = diffTree.flatMap(({ type, key, value, oldValue, newValue }) => {
+    switch (type) {
       case 'unchanged':
-        return renderLine(' ', node.key, node.value);
+        return renderLine(' ', key, value);
       case 'removed':
-        return renderLine('-', node.key, node.value);
+        return renderLine('-', key, value);
       case 'added':
-        return renderLine('+', node.key, node.value);
+        return renderLine('+', key, value);
       case 'updated':
         return [
-          renderLine('-', node.key, node.oldValue),
-          renderLine('+', node.key, node.newValue),
+          renderLine('-', key, oldValue),
+          renderLine('+', key, newValue),
         ];
       default:
-        throw new Error(`Unknown node type: ${node.type}`);
+        throw new Error(`Unknown node type: ${type}`);
     }
   });
   return ['{', ...lines, '}'].join('\n');
 };
 
 export default stylish;
-
-
