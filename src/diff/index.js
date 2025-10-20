@@ -1,1 +1,1 @@
-export { buildDiffTree } from './builder.js';
+export { buildDiffTree } from './builder.js'

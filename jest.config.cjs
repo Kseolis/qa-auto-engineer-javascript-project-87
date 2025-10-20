@@ -5,4 +5,4 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov'],
   testMatch: ['**/__tests__/**/*.test.js'],
-};
+}

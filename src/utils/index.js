@@ -1,4 +1,4 @@
-export { readFile } from './file.js';
+export { readFile } from './file.js'
 export {
   getFileExtension,
   isJsonExtension,
@@ -6,8 +6,8 @@ export {
   resolvePath,
   joinPath,
   getFixturePath,
-} from './path.js';
-export { stringifyValue, stringifyValueForStylish } from './string.js';
+} from './path.js'
+export { stringifyValue, stringifyValueForStylish } from './string.js'
 export {
   isObject,
   isString,
@@ -15,4 +15,4 @@ export {
   isBoolean,
   isNull,
   isUndefined,
-} from './type.js';
+} from './type.js'

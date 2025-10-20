@@ -24,10 +24,10 @@ export default [
       },
     },
     rules: {
-      '@stylistic/semi': 'off',
-      '@stylistic/arrow-parens': 'off',
-      '@stylistic/no-multiple-empty-lines': 'off',
-      '@stylistic/eol-last': 'off',
+      '@stylistic/semi': 'error',
+      '@stylistic/arrow-parens': 'error',
+      '@stylistic/no-multiple-empty-lines': 'error',
+      '@stylistic/eol-last': 'error',
     },
   },
 ]
