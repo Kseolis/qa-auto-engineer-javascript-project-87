@@ -62,6 +62,66 @@ gendiff __fixtures__/file1.yml __fixtures__/file2.yml
 }
 ```
 
+### Форматы вывода
+
+Пакет поддерживает несколько форматов вывода:
+
+#### 1. Stylish (по умолчанию)
+```bash
+gendiff file1.json file2.json
+# или
+gendiff -f stylish file1.json file2.json
+```
+
+#### 2. Plain
+```bash
+gendiff -f plain file1.json file2.json
+```
+
+Вывод:
+```
+Property 'follow' was removed
+Property 'proxy' was removed
+Property 'timeout' was updated. From 50 to 20
+Property 'verbose' was added with value: true
+```
+
+#### 3. JSON
+```bash
+gendiff -f json file1.json file2.json
+```
+
+Вывод:
+```json
+{
+  "summary": {
+    "total": 5,
+    "added": 1,
+    "removed": 2,
+    "updated": 1,
+    "unchanged": 1
+  },
+  "changes": {
+    "added": {
+      "verbose": true
+    },
+    "removed": {
+      "follow": false,
+      "proxy": "123.234.53.22"
+    },
+    "updated": {
+      "timeout": {
+        "oldValue": 50,
+        "newValue": 20
+      }
+    },
+    "unchanged": {
+      "host": "hexlet.io"
+    }
+  }
+}
+```
+
 ### Демонстрация (asciinema)
 
 [Демонстрация работы пакета с YAML на asciinema](https://asciinema.org/)

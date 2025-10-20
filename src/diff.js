@@ -1,6 +1,6 @@
 import fs from 'fs';
 import parseContent from './parsers.js';
-import stylish from './formatters/stylish.js';
+import formatDiff from './formatters/index.js';
 
 const readData = (filepath) => {
   const content = fs.readFileSync(filepath, 'utf-8');
@@ -34,14 +34,11 @@ const buildDiffTree = (data1, data2) => {
   return tree;
 };
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const data1 = readData(filepath1);
   const data2 = readData(filepath2);
   const diffTree = buildDiffTree(data1, data2);
-  if (format === 'stylish') {
-    return stylish(diffTree);
-  }
-  throw new Error(`Unknown format: ${format}`);
+  return formatDiff(diffTree, formatName);
 };
 
 export default genDiff;

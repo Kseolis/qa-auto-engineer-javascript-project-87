@@ -18,13 +18,13 @@
     ".": "./src/diff.js"
   },
   "bin": {
-    "gendiff": "./src/gendiff.js"
+    "gendiff": "bin/gendiff.js"
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll",
-    "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watchAll",
+    "coverage": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage"
   },
   "dependencies": {
     "commander": "^14.0.1",

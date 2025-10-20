@@ -1,17 +1,22 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import genDiff from './diff.js';
+import genDiff from '../src/diff.js';
 
 program
+  .name('gendiff')
   .usage('[options] <filepath1> <filepath2>')
-  .version('0.0.1')
+  .version('1.0.1')
   .option('-f, --format <type>', 'output format (default: stylish)')
   .description('Compares two configuration files and shows a difference.')
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((filepath1, filepath2, options) => {
     const format = options?.format ?? 'stylish';
-    genDiff(filepath1, filepath2, format);
-  })
-  .parse(process.argv);
+    // eslint-disable-next-line no-console
+    console.log(genDiff(filepath1, filepath2, format));
+  });
+
+program.parse(process.argv);
+
+
