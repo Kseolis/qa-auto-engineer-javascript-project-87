@@ -15,7 +15,7 @@ const plain = (diffTree) => {
           throw new Error(`Unknown node type: ${type}`);
       }
     });
-  
+
   return lines.join('\n');
 };
 
