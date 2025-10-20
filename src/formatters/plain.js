@@ -1,26 +1,18 @@
-const stringifyValue = (value) => {
-  if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
-    return '[complex value]';
-  }
-  if (typeof value === 'string') {
-    return `'${value}'`;
-  }
-  return String(value);
-};
+import { stringifyValue } from '../utils/string.js';
 
 const plain = (diffTree) => {
   const lines = diffTree
-    .filter((node) => node.type !== 'unchanged')
-    .map((node) => {
-      switch (node.type) {
+    .filter(({ type }) => type !== 'unchanged')
+    .map(({ type, key, value, oldValue, newValue }) => {
+      switch (type) {
         case 'removed':
-          return `Property '${node.key}' was removed`;
+          return `Property '${key}' was removed`;
         case 'added':
-          return `Property '${node.key}' was added with value: ${stringifyValue(node.value)}`;
+          return `Property '${key}' was added with value: ${stringifyValue(value)}`;
         case 'updated':
-          return `Property '${node.key}' was updated. From ${stringifyValue(node.oldValue)} to ${stringifyValue(node.newValue)}`;
+          return `Property '${key}' was updated. From ${stringifyValue(oldValue)} to ${stringifyValue(newValue)}`;
         default:
-          throw new Error(`Unknown node type: ${node.type}`);
+          throw new Error(`Unknown node type: ${type}`);
       }
     });
   

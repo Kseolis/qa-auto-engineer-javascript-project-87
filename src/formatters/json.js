@@ -6,25 +6,22 @@ const json = (diffTree) => {
     unchanged: {}
   };
 
-  diffTree.forEach(node => {
-    switch (node.type) {
+  diffTree.forEach(({ type, key, value, oldValue, newValue }) => {
+    switch (type) {
       case 'added':
-        changes.added[node.key] = node.value;
+        changes.added[key] = value;
         break;
       case 'removed':
-        changes.removed[node.key] = node.value;
+        changes.removed[key] = value;
         break;
       case 'updated':
-        changes.updated[node.key] = {
-          oldValue: node.oldValue,
-          newValue: node.newValue
-        };
+        changes.updated[key] = { oldValue, newValue };
         break;
       case 'unchanged':
-        changes.unchanged[node.key] = node.value;
+        changes.unchanged[key] = value;
         break;
       default:
-        throw new Error(`Unknown node type: ${node.type}`);
+        throw new Error(`Unknown node type: ${type}`);
     }
   });
 

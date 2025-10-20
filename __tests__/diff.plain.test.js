@@ -1,18 +1,17 @@
-import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 import genDiff from '../src/diff.js';
+import { getFixturePath } from '../src/utils/path.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const buildFixturePath = (relative) => path.join(__dirname, '..', '__fixtures__', relative);
-
 describe('genDiff plain format', () => {
   describe('JSON files', () => {
     test('returns expected plain diff for JSON files with all change types', () => {
-      const filepath1 = buildFixturePath('file1.json');
-      const filepath2 = buildFixturePath('file2.json');
+      const filepath1 = getFixturePath('file1.json');
+      const filepath2 = getFixturePath('file2.json');
       const expected = [
         "Property 'follow' was removed",
         "Property 'proxy' was removed",
@@ -25,14 +24,14 @@ describe('genDiff plain format', () => {
     });
 
     test('handles identical JSON files', () => {
-      const filepath = buildFixturePath('file1.json');
+      const filepath = getFixturePath('file1.json');
       const result = genDiff(filepath, filepath, 'plain');
       expect(result).toBe('');
     });
 
     test('does not mutate parsed JSON objects', () => {
-      const filepath1 = buildFixturePath('file1.json');
-      const filepath2 = buildFixturePath('file2.json');
+      const filepath1 = getFixturePath('file1.json');
+      const filepath2 = getFixturePath('file2.json');
       const original1 = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
       const original2 = JSON.parse(fs.readFileSync(filepath2, 'utf-8'));
 
@@ -46,16 +45,16 @@ describe('genDiff plain format', () => {
     });
 
     test('throws when JSON file does not exist', () => {
-      const filepath1 = buildFixturePath('file1.json');
-      const missing = buildFixturePath('no_such_file.json');
+      const filepath1 = getFixturePath('file1.json');
+      const missing = getFixturePath('no_such_file.json');
       expect(() => genDiff(filepath1, missing, 'plain')).toThrow();
     });
   });
 
   describe('YAML files', () => {
     test('returns expected plain diff for YAML files with all change types', () => {
-      const filepath1 = buildFixturePath('file1.yml');
-      const filepath2 = buildFixturePath('file2.yml');
+      const filepath1 = getFixturePath('file1.yml');
+      const filepath2 = getFixturePath('file2.yml');
       const expected = [
         "Property 'follow' was removed",
         "Property 'proxy' was removed",
@@ -68,14 +67,14 @@ describe('genDiff plain format', () => {
     });
 
     test('handles identical YAML files', () => {
-      const filepath = buildFixturePath('file1.yml');
+      const filepath = getFixturePath('file1.yml');
       const result = genDiff(filepath, filepath, 'plain');
       expect(result).toBe('');
     });
 
     test('throws when YAML file does not exist', () => {
-      const filepath1 = buildFixturePath('file1.yml');
-      const missing = buildFixturePath('no_such_file.yml');
+      const filepath1 = getFixturePath('file1.yml');
+      const missing = getFixturePath('no_such_file.yml');
       expect(() => genDiff(filepath1, missing, 'plain')).toThrow();
     });
   });
@@ -85,7 +84,6 @@ describe('genDiff plain format', () => {
       const data1 = { name: 'John' };
       const data2 = { name: 'Jane' };
       
-      // Create temporary files for testing
       const tempFile1 = path.join(__dirname, 'temp1.json');
       const tempFile2 = path.join(__dirname, 'temp2.json');
       
@@ -97,7 +95,6 @@ describe('genDiff plain format', () => {
       
       expect(result).toBe(expected);
       
-      // Clean up
       fs.unlinkSync(tempFile1);
       fs.unlinkSync(tempFile2);
     });
@@ -117,7 +114,6 @@ describe('genDiff plain format', () => {
       
       expect(result).toBe(expected);
       
-      // Clean up
       fs.unlinkSync(tempFile1);
       fs.unlinkSync(tempFile2);
     });
@@ -137,7 +133,6 @@ describe('genDiff plain format', () => {
       
       expect(result).toBe(expected);
       
-      // Clean up
       fs.unlinkSync(tempFile1);
       fs.unlinkSync(tempFile2);
     });
@@ -157,7 +152,6 @@ describe('genDiff plain format', () => {
       
       expect(result).toBe(expected);
       
-      // Clean up
       fs.unlinkSync(tempFile1);
       fs.unlinkSync(tempFile2);
     });
@@ -177,7 +171,6 @@ describe('genDiff plain format', () => {
       
       expect(result).toBe(expected);
       
-      // Clean up
       fs.unlinkSync(tempFile1);
       fs.unlinkSync(tempFile2);
     });
@@ -197,7 +190,6 @@ describe('genDiff plain format', () => {
       
       expect(result).toBe(expected);
       
-      // Clean up
       fs.unlinkSync(tempFile1);
       fs.unlinkSync(tempFile2);
     });

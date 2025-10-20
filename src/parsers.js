@@ -1,27 +1,40 @@
-import path from 'path';
 import yaml from 'js-yaml';
-
-const getExt = (filepath) => path.extname(filepath).toLowerCase();
-
-const isJson = (ext) => ext === '.json';
-const isYaml = (ext) => ext === '.yml' || ext === '.yaml';
+import { getFileExtension, isJsonExtension, isYamlExtension } from './utils/path.js';
 
 export const detectFormat = (filepath) => {
-  const ext = getExt(filepath);
-  if (isJson(ext)) return 'json';
-  if (isYaml(ext)) return 'yaml';
+  const ext = getFileExtension(filepath);
+  if (isJsonExtension(ext)) return 'json';
+  if (isYamlExtension(ext)) return 'yaml';
   throw new Error(`Unsupported file extension: ${ext}`);
 };
 
-export const parseContent = (filepath, content) => {
-  const format = detectFormat(filepath);
-  if (format === 'json') {
-    return JSON.parse(content);
+export const parseContent = (content, format) => {
+  try {
+    const parsers = {
+      json: () => JSON.parse(content),
+      yaml: () => yaml.load(content)
+    };
+    
+    const parser = parsers[format];
+    if (!parser) {
+      throw new Error(`Unsupported format: ${format}`);
+    }
+    
+    return parser();
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      throw new Error(`Invalid ${format} syntax: ${error.message}`);
+    }
+    if (error.message.includes('YAMLException')) {
+      throw new Error(`Invalid YAML syntax: ${error.message}`);
+    }
+    throw new Error(`Failed to parse ${format}: ${error.message}`);
   }
-  if (format === 'yaml') {
-    return yaml.load(content);
-  }
-  throw new Error('Unsupported format');
 };
 
-export default parseContent;
+export const parseFileContent = (filepath, content) => {
+  const format = detectFormat(filepath);
+  return parseContent(content, format);
+};
+
+export default parseFileContent;

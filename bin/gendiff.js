@@ -12,11 +12,16 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((filepath1, filepath2, options) => {
-    const format = options?.format ?? 'stylish';
-    // eslint-disable-next-line no-console
-    console.log(genDiff(filepath1, filepath2, format));
+    try {
+      const format = options?.format ?? 'stylish';
+      const result = genDiff(filepath1, filepath2, format);
+      // eslint-disable-next-line no-console
+      console.log(result);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(`Error: ${error.message}`);
+      process.exit(1);
+    }
   });
 
 program.parse(process.argv);
-
-
