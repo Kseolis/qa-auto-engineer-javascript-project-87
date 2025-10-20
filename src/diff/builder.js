@@ -2,7 +2,7 @@ export const buildDiffTree = (data1, data2) => {
   const keys1 = Object.keys(data1);
   const keys2 = Object.keys(data2);
   const allKeys = [...new Set([...keys1, ...keys2])].sort((a, b) => a.localeCompare(b));
-  
+
   return allKeys.map((key) => {
     const has1 = Object.prototype.hasOwnProperty.call(data1, key);
     const has2 = Object.prototype.hasOwnProperty.call(data2, key);
