@@ -3,7 +3,7 @@ const json = (diffTree) => {
     added: {},
     removed: {},
     updated: {},
-    unchanged: {}
+    unchanged: {},
   };
 
   diffTree.forEach(({ type, key, value, oldValue, newValue }) => {
@@ -31,9 +31,9 @@ const json = (diffTree) => {
       added: Object.keys(changes.added).length,
       removed: Object.keys(changes.removed).length,
       updated: Object.keys(changes.updated).length,
-      unchanged: Object.keys(changes.unchanged).length
+      unchanged: Object.keys(changes.unchanged).length,
     },
-    changes
+    changes,
   };
 
   return JSON.stringify(result, null, 2);
