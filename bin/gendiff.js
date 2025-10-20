@@ -14,10 +14,10 @@ program
     try {
       const format = options?.format ?? 'stylish';
       const result = genDiff(filepath1, filepath2, format);
-      // eslint-disable-next-line no-console
+
       console.log(result);
-    } catch (error) {
-      // eslint-disable-next-line no-console
+    }
+    catch (error) {
       console.error(`Error: ${error.message}`);
       process.exit(1);
     }

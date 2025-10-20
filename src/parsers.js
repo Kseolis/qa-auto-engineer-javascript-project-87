@@ -12,16 +12,17 @@ export const parseContent = (content, format) => {
   try {
     const parsers = {
       json: () => JSON.parse(content),
-      yaml: () => yaml.load(content)
+      yaml: () => yaml.load(content),
     };
-    
+
     const parser = parsers[format];
     if (!parser) {
       throw new Error(`Unsupported format: ${format}`);
     }
-    
+
     return parser();
-  } catch (error) {
+  }
+  catch (error) {
     if (error instanceof SyntaxError) {
       throw new Error(`Invalid ${format} syntax: ${error.message}`);
     }
