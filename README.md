@@ -217,7 +217,7 @@ npm publish --dry-run
 ```
 __tests__/
 ├── diff.flat.test.js      # Тесты для плоских JSON
-├── diff.flat.yaml.test.js # Тесты для плоских YAML
+├── diff.test.js # Тесты для плоских YAML
 ├── diff.plain.test.js     # Тесты формата plain
 └── diff.json.test.js      # Тесты формата json
 ```
