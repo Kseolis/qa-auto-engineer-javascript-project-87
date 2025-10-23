@@ -22,7 +22,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watchAll",
     "coverage": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage"
   },
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
+    "@jest/globals": "^30.2.0",
     "@stylistic/eslint-plugin": "^5.2.2",
     "eslint": "^9.35.0",
     "globals": "^16.3.0",

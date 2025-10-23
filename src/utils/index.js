@@ -5,7 +5,6 @@ export {
   isYamlExtension,
   resolvePath,
   joinPath,
-  getFixturePath,
 } from './path.js'
 export { stringifyValue, stringifyValueForStylish } from './string.js'
 export {

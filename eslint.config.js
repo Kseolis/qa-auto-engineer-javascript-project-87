@@ -28,6 +28,8 @@ export default [
       '@stylistic/arrow-parens': 'error',
       '@stylistic/no-multiple-empty-lines': 'error',
       '@stylistic/eol-last': 'error',
+      'no-unused-vars': 'warn',
+      'no-undef': 'warn',
     },
   },
 ]
