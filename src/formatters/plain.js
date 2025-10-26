@@ -1,4 +1,4 @@
-import { stringifyValue } from '../utils/string.js'
+import { stringifyValue } from '../utils.js'
 
 const plain = (diffTree) => {
   const lines = diffTree

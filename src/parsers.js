@@ -1,5 +1,5 @@
 import yaml from 'js-yaml'
-import { getFileExtension, isJsonExtension, isYamlExtension } from './utils/path.js'
+import { getFileExtension, isJsonExtension, isYamlExtension } from './utils.js'
 
 export const detectFormat = (filepath) => {
   const ext = getFileExtension(filepath)
@@ -16,9 +16,6 @@ export const parseContent = (content, format) => {
     }
 
     const parser = parsers[format]
-    if (!parser) {
-      throw new Error(`Unsupported format: ${format}`)
-    }
 
     return parser()
   }

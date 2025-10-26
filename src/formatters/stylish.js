@@ -1,4 +1,4 @@
-import { stringifyValueForStylish } from '../utils/string.js'
+import { stringifyValueForStylish } from '../utils.js'
 
 const renderLine = (sign, key, value) => {
   const prefix = sign === ' ' ? '    ' : `  ${sign} `

@@ -20,6 +20,5 @@ export const buildDiffTree = (data1, data2) => {
     if (!has1 && has2) {
       return { type: 'added', key, value: val2 }
     }
-    return null
   }).filter(Boolean)
 }
