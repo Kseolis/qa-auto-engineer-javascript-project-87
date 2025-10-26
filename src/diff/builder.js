@@ -8,17 +8,15 @@ export const buildDiffTree = (data1, data2) => {
     const has2 = Object.hasOwn(data2, key)
     const [val1, val2] = [data1[key], data2[key]]
 
-    if (!has1 && has2) {
+    if (!has1) {
       return { type: 'added', key, value: val2 }
     }
-    else if (has1 && !has2) {
+    if (!has2) {
       return { type: 'removed', key, value: val1 }
     }
-    else if (has1 && has2 && Object.is(val1, val2)) {
+    if (val1 === val2) {
       return { type: 'unchanged', key, value: val1 }
     }
-    else {
-      return { type: 'updated', key, oldValue: val1, newValue: val2 }
-    }
-  }).filter(Boolean)
+    return { type: 'updated', key, value1: val1, value2: val2 }
+  })
 }

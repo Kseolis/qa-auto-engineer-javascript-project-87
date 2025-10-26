@@ -6,7 +6,7 @@ const json = (diffTree) => {
     unchanged: {},
   }
 
-  for (const { type, key, value, oldValue, newValue } of diffTree) {
+  for (const { type, key, value, value1, value2 } of diffTree) {
     switch (type) {
       case 'added':
         changes.added[key] = value
@@ -15,7 +15,7 @@ const json = (diffTree) => {
         changes.removed[key] = value
         break
       case 'updated':
-        changes.updated[key] = { oldValue, newValue }
+        changes.updated[key] = { value1, value2 }
         break
       case 'unchanged':
         changes.unchanged[key] = value

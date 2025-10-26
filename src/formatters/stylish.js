@@ -7,7 +7,7 @@ const stylish = (diffTree) => {
   const lines = []
 
   for (const node of diffTree) {
-    const { type, key, value, oldValue, newValue } = node
+    const { type, key, value, value1, value2 } = node
 
     switch (type) {
       case 'unchanged':
@@ -21,8 +21,8 @@ const stylish = (diffTree) => {
         break
       case 'updated':
         lines.push(
-          renderLine('-', key, oldValue),
-          renderLine('+', key, newValue),
+          renderLine('-', key, value1),
+          renderLine('+', key, value2),
         )
         break
       default:

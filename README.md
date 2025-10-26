@@ -144,8 +144,8 @@ gendiff -f json file1.json file2.json
     },
     "updated": {
       "timeout": {
-        "oldValue": 50,
-        "newValue": 20
+        "value1": 50,
+        "value2": 20
       }
     },
     "unchanged": {
