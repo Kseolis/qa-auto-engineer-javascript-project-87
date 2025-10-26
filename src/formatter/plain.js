@@ -1,4 +1,4 @@
-const plain = (diffTree) => {
+const formatPlain = (diffTree) => {
   const lines = diffTree
     .filter(({ type }) => type !== 'unchanged')
     .map(({ type, key, value, value1, value2 }) => {
@@ -17,4 +17,4 @@ const plain = (diffTree) => {
   return lines.join('\n')
 }
 
-export default plain
+export default formatPlain

@@ -1,3 +1,5 @@
+import { format } from './formatter/index.js'
+import { readFile } from './utils.js'
 import _ from 'lodash'
 
 export const buildDiffTree = (data1, data2) => {
@@ -22,3 +24,12 @@ export const buildDiffTree = (data1, data2) => {
     return { type: 'updated', key, value1: val1, value2: val2 }
   })
 }
+
+const diffBuilder = (filepath1, filepath2, formatName = 'stylish') => {
+  const data1 = readFile(filepath1)
+  const data2 = readFile(filepath2)
+  const diffTree = buildDiffTree(data1, data2)
+  return format(diffTree, formatName)
+}
+
+export default diffBuilder
