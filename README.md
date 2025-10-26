@@ -31,7 +31,7 @@ make link
 
 ```
 src/
-├── diffBuilder.js              # Главный API
+├── diff.js              # Главный API
 ├── parser.js           # Парсинг JSON/YAML файлов
 ├── formatters/
 │   ├── index.js         # Выбор и вызов форматтеров
