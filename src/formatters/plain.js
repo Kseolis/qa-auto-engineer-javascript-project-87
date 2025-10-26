@@ -1,5 +1,3 @@
-import { stringifyValue } from '../utils.js'
-
 const plain = (diffTree) => {
   const lines = diffTree
     .filter(({ type }) => type !== 'unchanged')
@@ -8,9 +6,9 @@ const plain = (diffTree) => {
         case 'removed':
           return `Property '${key}' was removed`
         case 'added':
-          return `Property '${key}' was added with value: ${stringifyValue(value)}`
+          return `Property '${key}' was added with value: ${value}`
         case 'updated':
-          return `Property '${key}' was updated. From ${stringifyValue(oldValue)} to ${stringifyValue(newValue)}`
+          return `Property '${key}' was updated. From ${oldValue} to ${newValue}`
         default:
           throw new Error(`Unknown node type: ${type}`)
       }

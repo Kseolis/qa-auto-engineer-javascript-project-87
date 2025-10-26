@@ -1,8 +1,6 @@
-import { stringifyValueForStylish } from '../utils.js'
-
 const renderLine = (sign, key, value) => {
   const prefix = sign === ' ' ? '    ' : `  ${sign} `
-  return `${prefix}${key}: ${stringifyValueForStylish(value)}`
+  return `${prefix}${key}: ${value}`
 }
 
 const stylish = (diffTree) => {
