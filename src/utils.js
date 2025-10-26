@@ -28,12 +28,11 @@ export const stringifyValueForStylish = (value) => {
 }
 
 export const getFormat = (filepath) => {
-  const ext = path.extname(filepath).toLowerCase()
-  if (ext === '.json') {
-    return 'json'
-  }
-  else if (ext === '.yml' || ext === '.yaml') {
+  const ext = path.extname(filepath)
+    .toLowerCase()
+    .replace('.', '')
+  if (ext === 'yml') {
     return 'yaml'
   }
-  throw new Error(`Unsupported file extension: ${ext}`)
+  return ext
 }
