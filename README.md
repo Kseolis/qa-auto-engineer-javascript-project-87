@@ -33,17 +33,11 @@ make link
 src/
 ├── diff.js              # Главный API
 ├── parser.js           # Парсинг JSON/YAML файлов
-├── formatters/
+├── formatter/
 │   ├── index.js         # Выбор и вызов форматтеров
 │   ├── stylish.js       # Stylish форматтер
 │   ├── plain.js         # Plain форматтер
 │   └── json.js          # JSON форматтер
-└── utils/
-    ├── file.js          # Работа с файлами
-    ├── path.js          # Работа с путями
-    ├── string.js        # Строковые утилиты
-    ├── type.js          # Проверки типов
-    └── index.js         # Экспорт всех утилит
 
 bin/
 └── gendiff.js           # CLI точка входа
@@ -123,33 +117,34 @@ gendiff -f json file1.json file2.json
 
 Вывод:
 ```json
-{
-  "summary": {
-    "total": 5,
-    "added": 1,
-    "removed": 2,
-    "updated": 1,
-    "unchanged": 1
+[
+  {
+    "type": "removed",
+    "key": "follow",
+    "value": false
   },
-  "changes": {
-    "added": {
-      "verbose": true
-    },
-    "removed": {
-      "follow": false,
-      "proxy": "123.234.53.22"
-    },
-    "updated": {
-      "timeout": {
-        "value1": 50,
-        "value2": 20
-      }
-    },
-    "unchanged": {
-      "host": "hexlet.io"
-    }
+  {
+    "type": "unchanged",
+    "key": "host",
+    "value": "hexlet.io"
+  },
+  {
+    "type": "removed",
+    "key": "proxy",
+    "value": "123.234.53.22"
+  },
+  {
+    "type": "updated",
+    "key": "timeout",
+    "value1": 50,
+    "value2": 20
+  },
+  {
+    "type": "added",
+    "key": "verbose",
+    "value": true
   }
-}
+]
 ```
 
 ## Примеры файлов
