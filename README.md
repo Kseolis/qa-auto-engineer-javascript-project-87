@@ -32,10 +32,7 @@ make link
 ```
 src/
 ├── diff.js              # Главный API
-├── parsers.js           # Парсинг JSON/YAML файлов
-├── diff/
-│   ├── builder.js       # Алгоритм построения diff-модели
-│   └── index.js         # Экспорт diff-функций
+├── parser.js           # Парсинг JSON/YAML файлов
 ├── formatters/
 │   ├── index.js         # Выбор и вызов форматтеров
 │   ├── stylish.js       # Stylish форматтер
@@ -77,7 +74,7 @@ gendiff -f plain file1.yml file2.yml
 import genDiff from '@hexlet/code';
 
 // Сравнение файлов
-const diff = genDiff('file1.json', 'file2.json', 'stylish');
+const diff = genDiff('file1.json', 'file2.json', 'formatStylish');
 console.log(diff);
 ```
 
@@ -144,8 +141,8 @@ gendiff -f json file1.json file2.json
     },
     "updated": {
       "timeout": {
-        "oldValue": 50,
-        "newValue": 20
+        "value1": 50,
+        "value2": 20
       }
     },
     "unchanged": {

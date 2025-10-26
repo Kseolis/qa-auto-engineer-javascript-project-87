@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { describe, expect, test } from '@jest/globals'
-import genDiff from '../src/diff.js'
 import { getFixturePath } from './helpers.js'
+import diff from '../src/diff.js'
 
 describe('genDiff', () => {
   const formats = ['json', 'yml']
@@ -14,15 +14,15 @@ describe('genDiff', () => {
     const expectedPlain = fs.readFileSync(getFixturePath('expectedPlain.txt'), 'utf-8')
     const expectedJson = fs.readFileSync(getFixturePath('expectedJsonFormat.txt'), 'utf-8')
 
-    expect(genDiff(filepath1, filepath2)).toBe(expectedStylish)
-    expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedJson)
-    expect(genDiff(filepath1, filepath2, 'plain')).toBe(expectedPlain)
-    expect(genDiff(filepath1, filepath2, 'stylish')).toBe(expectedStylish)
+    expect(diff(filepath1, filepath2)).toBe(expectedStylish)
+    expect(diff(filepath1, filepath2, 'json')).toBe(expectedJson)
+    expect(diff(filepath1, filepath2, 'plain')).toBe(expectedPlain)
+    expect(diff(filepath1, filepath2, 'stylish')).toBe(expectedStylish)
   })
 
   test('throws when file does not exist', () => {
     const filepath1 = getFixturePath('file1.json')
     const missing = getFixturePath('no_such_file.json')
-    expect(() => genDiff(filepath1, missing)).toThrow()
+    expect(() => diff(filepath1, missing)).toThrow()
   })
 })

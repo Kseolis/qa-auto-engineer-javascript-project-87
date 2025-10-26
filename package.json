@@ -29,6 +29,7 @@
   "dependencies": {
     "commander": "^14.0.1",
     "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
