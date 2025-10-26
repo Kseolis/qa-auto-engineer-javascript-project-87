@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { parseFileContent } from './parsers.js'
+import { parseFileContent } from './parser.js'
 
 export const readFile = (filepath) => {
   try {

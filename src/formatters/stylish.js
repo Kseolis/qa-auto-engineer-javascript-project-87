@@ -3,34 +3,26 @@ const renderLine = (sign, key, value) => {
   return `${prefix}${key}: ${value}`
 }
 
-const stylish = (diffTree) => {
-  const lines = []
-
-  for (const node of diffTree) {
+const formatStylish = (diffTree) => {
+  const lines = diffTree.flatMap((node) => {
     const { type, key, value, value1, value2 } = node
 
     switch (type) {
       case 'unchanged':
-        lines.push(renderLine(' ', key, value))
-        break
+        return [renderLine(' ', key, value)]
       case 'removed':
-        lines.push(renderLine('-', key, value))
-        break
+        return [renderLine('-', key, value)]
       case 'added':
-        lines.push(renderLine('+', key, value))
-        break
+        return [renderLine('+', key, value)]
       case 'updated':
-        lines.push(
+        return [
           renderLine('-', key, value1),
           renderLine('+', key, value2),
-        )
-        break
+        ]
       default:
         throw new Error(`Unknown node type: ${type}`)
     }
-  }
-
+  })
   return ['{', ...lines, '}'].join('\n')
 }
-
-export default stylish
+export default formatStylish
