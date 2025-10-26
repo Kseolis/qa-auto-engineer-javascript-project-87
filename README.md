@@ -168,15 +168,6 @@ gendiff -f json file1.json file2.json
 }
 ```
 
-## Обработка ошибок
-
-Утилита предоставляет информативные сообщения об ошибках:
-
-- **Файл не найден**: `Error: Cannot read file: path/to/file`
-- **Неподдерживаемый формат**: `Error: Unsupported file extension: .txt`
-- **Ошибка парсинга**: `Error: Failed to parse json: Unexpected token`
-- **Неизвестный формат вывода**: `Error: Unknown format: invalid`
-
 ## Разработка
 
 ### Команды разработки
@@ -208,10 +199,7 @@ npm publish --dry-run
 
 ```
 __tests__/
-├── diff.flat.test.js      # Тесты для плоских JSON
-├── diff.test.js # Тесты для плоских YAML
-├── diff.plain.test.js     # Тесты формата plain
-└── diff.json.test.js      # Тесты формата json
+├── genDiff.test.js     # Тесты форматтеров
 ```
 
 ## CI/CD
