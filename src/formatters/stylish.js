@@ -15,22 +15,18 @@ const stylish = (diffTree) => {
       case 'unchanged':
         lines.push(renderLine(' ', key, value))
         break
-
       case 'removed':
         lines.push(renderLine('-', key, value))
         break
-
       case 'added':
         lines.push(renderLine('+', key, value))
         break
-
       case 'updated':
         lines.push(
           renderLine('-', key, oldValue),
           renderLine('+', key, newValue),
         )
         break
-
       default:
         throw new Error(`Unknown node type: ${type}`)
     }
