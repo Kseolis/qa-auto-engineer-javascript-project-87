@@ -1,27 +1,28 @@
-{
-  "summary": {
-    "total": 5,
-    "added": 1,
-    "removed": 2,
-    "updated": 1,
-    "unchanged": 1
+[
+  {
+    "type": "removed",
+    "key": "follow",
+    "value": false
   },
-  "changes": {
-    "added": {
-      "verbose": true
-    },
-    "removed": {
-      "follow": false,
-      "proxy": "123.234.53.22"
-    },
-    "updated": {
-      "timeout": {
-        "value1": 50,
-        "value2": 20
-      }
-    },
-    "unchanged": {
-      "host": "hexlet.io"
-    }
+  {
+    "type": "unchanged",
+    "key": "host",
+    "value": "hexlet.io"
+  },
+  {
+    "type": "removed",
+    "key": "proxy",
+    "value": "123.234.53.22"
+  },
+  {
+    "type": "updated",
+    "key": "timeout",
+    "value1": 50,
+    "value2": 20
+  },
+  {
+    "type": "added",
+    "key": "verbose",
+    "value": true
   }
-}
+]

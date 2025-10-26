@@ -3,7 +3,7 @@ const renderLine = (sign, key, value) => {
   return `${prefix}${key}: ${value}`
 }
 
-const formatStylish = (diffTree) => {
+const stylish = (diffTree) => {
   const lines = diffTree.flatMap((node) => {
     const { type, key, value, value1, value2 } = node
 
@@ -25,4 +25,4 @@ const formatStylish = (diffTree) => {
   })
   return ['{', ...lines, '}'].join('\n')
 }
-export default formatStylish
+export default stylish

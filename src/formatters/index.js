@@ -1,8 +1,8 @@
-import formatStylish from './stylish.js'
 import plain from './plain.js'
 import json from './json.js'
+import stylish from './stylish.js'
 
-const formatters = { formatStylish, plain, json }
+const formatters = { stylish, plain, json }
 
 export const format = (diffTree, formatName = 'formatStylish') => {
   const formatter = formatters[formatName]

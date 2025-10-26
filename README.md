@@ -58,13 +58,13 @@ bin/
 ### CLI
 
 ```bash
-# Базовое использование (формат formatStylish по умолчанию)
+# Базовое использование (формат stylish по умолчанию)
 gendiff file1.json file2.json
 
 # С указанием формата
 gendiff -f plain file1.json file2.json
 gendiff -f json file1.json file2.json
-gendiff -f formatStylish file1.json file2.json
+gendiff -f stylish file1.json file2.json
 
 # С YAML файлами
 gendiff file1.yml file2.yml

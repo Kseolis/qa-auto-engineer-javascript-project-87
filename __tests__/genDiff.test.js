@@ -17,7 +17,7 @@ describe('genDiff', () => {
     expect(genDiff(filepath1, filepath2)).toBe(expectedStylish)
     expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedJson)
     expect(genDiff(filepath1, filepath2, 'plain')).toBe(expectedPlain)
-    expect(genDiff(filepath1, filepath2, 'formatStylish')).toBe(expectedStylish)
+    expect(genDiff(filepath1, filepath2, 'stylish')).toBe(expectedStylish)
   })
 
   test('throws when file does not exist', () => {
