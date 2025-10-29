@@ -1,22 +1,18 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { parseFileContent } from './parser.js'
+import { parse } from './parser.js'
+
+export const extractFormat = filepath => path
+  .extname(filepath)
+  .toLowerCase()
+  .slice(1)
 
 export const readFile = (filepath) => {
   try {
-    return parseFileContent(filepath, fs.readFileSync(filepath, 'utf-8'))
+    const content = fs.readFileSync(filepath, 'utf-8')
+    return parse(content, extractFormat(filepath))
   }
   catch (error) {
     throw new Error(`Cannot read file: ${filepath}: ${error.message}`)
   }
-}
-
-export const getFormat = (filepath) => {
-  const ext = path.extname(filepath)
-    .toLowerCase()
-    .replace('.', '')
-  if (ext === 'yml') {
-    return 'yaml'
-  }
-  return ext
 }
