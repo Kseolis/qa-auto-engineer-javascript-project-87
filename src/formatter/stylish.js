@@ -1,7 +1,20 @@
-const renderLine = (sign, key, value) => {
-  const prefix = sign === ' ' ? '    ' : `  ${sign} `
-  return `${prefix}${key}: ${value}`
+const getIndent = sign => (sign === ' ' ? '    ' : `  ${sign} `)
+
+const stringify = (value, depth = 1) => {
+  if (value !== null && typeof value === 'object') {
+    const indentSize = 4
+    const currentIndent = ' '.repeat(indentSize * depth)
+    const bracketIndent = ' '.repeat(indentSize * (depth - 1))
+    const entries = Object.entries(value)
+      .map(([key, value]) => `${currentIndent}${key}: ${stringify(value, depth + 1)}`)
+    return `{
+${entries.join('\n')}
+${bracketIndent}}`
+  }
+  return String(value)
 }
+
+const renderLine = (sign, key, value) => `${getIndent(sign)}${key}: ${stringify(value)}`
 
 const formatStylish = (diffTree) => {
   const lines = diffTree.flatMap((node) => {

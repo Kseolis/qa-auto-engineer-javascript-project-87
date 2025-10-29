@@ -1,16 +1,15 @@
 import yaml from 'js-yaml'
-import { getFormat } from './utils.js'
 
-export const parseFileContent = (filepath, content) => {
-  const format = getFormat(filepath)
+const parsers = {
+  json: JSON.parse,
+  yaml: yaml.load,
+  yml: yaml.load,
+}
 
+export const parse = (content, format) => {
   try {
-    const parsers = {
-      json: () => JSON.parse(content),
-      yaml: () => yaml.load(content),
-    }
     const parser = parsers[format]
-    return parser()
+    return parser(content)
   }
   catch (error) {
     throw new Error(`Failed to parse ${format}: ${error.message}`)
